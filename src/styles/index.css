@@ -1,0 +1,140 @@
+:root {
+  font-family: Inter, sans-serif;
+  color: #17211c;
+  background: #f7f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+
+  --color-ink: #17211c;
+  --color-muted: #68716b;
+  --color-accent: #f2c94c;
+  --color-surface: #fff;
+  --page-gutter: 24px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(100% - var(--page-gutter) * 2, 1200px);
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  min-height: 80px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #e4e8e2;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header__logo {
+  width: 36px;
+  height: 36px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-nav__link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav__link:hover,
+.site-nav__link.active {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.page-content {
+  padding-block: 72px 96px;
+}
+
+.page-intro {
+  max-width: 680px;
+}
+
+.page-intro__eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-intro__title {
+  margin: 0;
+  font-size: clamp(40px, 8vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.page-intro__description {
+  max-width: 520px;
+  margin: 24px 0 0;
+  color: var(--color-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: 40px;
+  }
+
+  .site-header {
+    min-height: 96px;
+  }
+
+  .site-nav {
+    gap: 16px;
+  }
+
+  .site-nav__link {
+    padding-inline: 18px;
+    font-size: 15px;
+  }
+
+  .page-content {
+    padding-top: 112px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --page-gutter: 48px;
+  }
+
+  .page-content {
+    padding-top: 144px;
+  }
+}
