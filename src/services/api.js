@@ -12,7 +12,7 @@ export async function fetchJson(url, options) {
   if (!response.ok) {
     throw new ApiError(
       `Request failed: ${response.status} ${response.statusText}`.trim(),
-      response.status,
+      response.status
     );
   }
 
