@@ -1,30 +1,31 @@
-import template from './AppShell.html?raw';
-import './AppShell.css';
-import { icons } from '../../images';
-
-export function renderAppShell(path: string, page: string): HTMLElement {
-  const fragment = document.createRange().createContextualFragment(template);
-  const shell = fragment.querySelector<HTMLElement>('.app-shell');
-  const brandIcon =
-    fragment.querySelector<HTMLImageElement>('[data-brand-icon]');
-  const content = fragment.querySelector<HTMLElement>('[data-page-content]');
-  const navigationLinks =
-    fragment.querySelectorAll<HTMLAnchorElement>('[data-route]');
-
-  if (!shell || !brandIcon || !content || navigationLinks.length === 0) {
-    throw new Error('App shell template is missing required elements.');
+export function initAppShell(): void {
+  const pages = document.querySelectorAll<HTMLElement>('[data-page]');
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-route]');
+  if (pages.length === 0 || links.length === 0) {
+    throw new Error('App shell is missing pages or navigation.');
   }
 
-  brandIcon.src = icons.logo;
-  content.innerHTML = page;
+  function updateRoute(): void {
+    const path =
+      (window.location.hash.slice(1) || '/')
+        .split(/[?]/)[0]
+        .replace(/\/+$/, '') || '/';
+    const route = path.toLowerCase() === '/favorites' ? '/favorites' : '/';
 
-  for (const link of navigationLinks) {
-    const isCurrent = link.dataset.route === path;
-    link.classList.toggle('active', isCurrent);
-    if (isCurrent) {
-      link.setAttribute('aria-current', 'page');
+    for (const page of pages) {
+      page.hidden = page.dataset.page !== route;
+    }
+    for (const link of links) {
+      const active = link.dataset.route === route;
+      link.classList.toggle('active', active);
+      if (active) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
     }
   }
 
-  return shell;
+  updateRoute();
+  window.addEventListener('hashchange', updateRoute);
 }
