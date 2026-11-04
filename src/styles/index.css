@@ -6,6 +6,7 @@
 @import '../components/SearchField/SearchField.css';
 @import '../pages/HomePage/HomePage.css';
 @import '../pages/FavoritesPage/FavoritesPage.css';
+@import '../components/Footer/Footer.css';
 :root {
   font-family: var(--font-family);
   font-size: var(--font-size-body);
