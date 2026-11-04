@@ -7,6 +7,7 @@ import { initAppShell } from './components/AppShell/AppShell';
 import { initSearchFields } from './components/SearchField/SearchField';
 import './pages/HomePage/HomePage';
 import './pages/FavoritesPage/FavoritesPage';
+import './components/Footer/Footer';
 
 initAppShell();
 initSearchFields();
