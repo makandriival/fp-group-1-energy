@@ -1,12 +1,17 @@
 export class ApiError extends Error {
-  constructor(message, status) {
+  status: number;
+
+  constructor(message: string, status: number) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
   }
 }
 
-export async function fetchJson(url, options) {
+export async function fetchJson<T>(
+  url: string,
+  options?: RequestInit
+): Promise<T> {
   const response = await fetch(url, options);
 
   if (!response.ok) {
@@ -16,5 +21,5 @@ export async function fetchJson(url, options) {
     );
   }
 
-  return response.json();
+  return (await response.json()) as T;
 }

@@ -1,22 +1,24 @@
 # Project guidance
 
-This is a shared Vite + React JavaScript starter. Keep changes focused on the
-requested teammate task; do not build unrelated screens, demo pages, or tooling.
-See [README.md](./README.md) for setup, commands, and commit conventions.
+This is a shared Vite + TypeScript starter without React. Keep changes focused
+on the requested teammate task; do not build unrelated screens, demo pages, or
+tooling. See [README.md](./README.md) for setup, commands, and commit
+conventions.
 
 ## Implementation
 
-- Keep route entry points in `src/pages` and reusable UI in `src/components`.
-- Reuse `Button`, `Icon`, and `SearchField` from `src/components/ui.jsx` before
-  adding equivalent components.
-- Reuse `src/styles/tokens.css` and shared styles. Use BEM-style class names;
-  preserve the 768px and 1200px breakpoint conventions.
+- Keep each page and reusable component in its own folder, with matching `.ts`,
+  `.html`, and `.css` files.
+- Use native DOM APIs and the existing component folders in `src/components`.
+- Keep component and page styles beside their TypeScript and HTML files; reserve
+  shared styles for global rules, tokens, and reusable utilities. Use BEM-style
+  class names and preserve the 768px and 1200px breakpoint conventions.
 - Keep static assets in `src/images` with readable filenames. Prefer existing
-  exports from `src/images/index.js`; preserve SVG colors and dimensions. Do not
+  exports from `src/images/index.ts`; preserve SVG colors and dimensions. Do not
   commit temporary Figma asset URLs or extra unused exports.
-- Preserve `HashRouter` and Vite's repository base path for GitHub Pages.
+- Preserve hash-based routing and Vite's repository base path for GitHub Pages.
   Public-file URLs must use `import.meta.env.BASE_URL`.
-- Use `fetchJson` and `ApiError` from `src/services/api.js`. Present request
+- Use `fetchJson` and `ApiError` from `src/services/api.ts`. Present request
   failures to users rather than swallowing errors or returning fake success.
 - Confirm shared catalog and favorites contracts before introducing state or
   persistence assumptions. Do not treat Figma example data as an API contract.

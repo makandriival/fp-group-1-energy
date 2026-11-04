@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import test from 'node:test';
 
 const root = new URL('../src/images/', import.meta.url);
-const source = readFileSync(new URL('index.js', root), 'utf8');
+const source = readFileSync(new URL('index.ts', root), 'utf8');
 const imports = [
   ...source.matchAll(/from '\.\/((?:icons|photos)\/[^']+)'/g),
 ].map(match => match[1]);
